@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Kaushal 💘</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 10;
+      max-width: 320px;
+      position: relative;
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    p {
+      color: #555;
+    }
+
+    button {
+      padding: 10px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .yes {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    .no {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      animation: floatUp 5s linear infinite;
+      color: #e91e63;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8d8c2b7a34.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <h1>Kaushal 💖</h1>
+    <p>I made this just for you 😊</p>
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <button class="yes" onclick="yesClick(); playMusic()">Yes 💕</button>
+    <button class="no" id="noBtn">No 💔</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const music = document.getElementById("bgMusic");
+    let musicPlayed = false;
+
+    function playMusic() {
+      if (!musicPlayed) {
+        music.play();
+        musicPlayed = true;
+      }
+    }
+
+    function moveButton() {
+      noBtn.style.left = Math.random() * 200 + "px";
+      noBtn.style.top = Math.random() * 150 + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveButton);
+
+    function yesClick() {
+      document.getElementById("card").innerHTML = `
+        <h1>Yayyy Kaushal! 💕</h1>
+
+        <p style="font-size:15px;">I want to tell you something 💌</p>
+
+        <p style="color:#e91e63; line-height:1.6;">
+          Somewhere between the smiles and conversations,<br>
+          you became special to me 💖<br><br>
+
+          You make my days feel lighter,<br>
+          and my heart a little happier 😊<br><br>
+
+          I don’t know where this will go,<br>
+          but I know I’d love to start with you 💕
+        </p>
+
+        <p style="font-size:14px; color:#777;">
+          Happy Valentine’s Day 💘
+        </p>
+
+        <p style="font-size:13px; color:#999;">
+          — From Riya 💖
+        </p>
+      `;
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
