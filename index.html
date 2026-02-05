@@ -22,12 +22,13 @@
 
     .card {
       background: white;
-      padding: 30px 35px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-      z-index: 10;
-      max-width: 340px;
+      padding: 32px 36px;
+      border-radius: 22px;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+      max-width: 360px;
       animation: pop 0.8s ease;
+      position: relative;
+      z-index: 5;
     }
 
     @keyframes pop {
@@ -39,38 +40,53 @@
       font-family: 'Pacifico', cursive;
       color: #e91e63;
       margin-bottom: 10px;
+      font-size: 34px;
     }
 
     p {
-      font-size: 20px;
+      font-size: 21px;
       color: #444;
       line-height: 1.6;
+      margin: 8px 0;
+    }
+
+    .question {
+      font-size: 23px;
+      margin-top: 12px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 22px;
+      position: relative;
     }
 
     button {
-      padding: 12px 28px;
+      padding: 12px 30px;
       font-size: 18px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      margin-top: 15px;
       font-family: 'Pacifico', cursive;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     button:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
     }
 
     .yes {
-      background: linear-gradient(45deg, #e91e63, #ff6090);
+      background: linear-gradient(45deg, #e91e63, #ff6f91);
       color: white;
     }
 
     .no {
-      background-color: #ddd;
-      position: absolute;
-      font-family: 'Pacifico', cursive;
+      background-color: #e0e0e0;
+      color: #555;
+      position: relative;
     }
 
     .heart {
@@ -78,6 +94,7 @@
       animation: floatUp 5s linear infinite;
       color: #e91e63;
       font-size: 22px;
+      z-index: 1;
     }
 
     @keyframes floatUp {
@@ -105,14 +122,14 @@
 
     <p>I made this little surprise just for you 😊</p>
 
-    <p style="font-size:22px;">
+    <p class="question">
       Will you be my Valentine? 💘
     </p>
-    
-    
-    <button class="yes" onclick="yesClick(); playMusic()">Yes 💕</button>
-    
-    <button class="no" id="noBtn">No 💔</button>
+
+    <div class="btn-group">
+      <button class="yes" onclick="yesClick(); playMusic()">Yes 💕</button>
+      <button class="no" id="noBtn">No 💔</button>
+    </div>
   </div>
 
   <script>
@@ -128,8 +145,7 @@
     }
 
     function moveButton() {
-      noBtn.style.left = Math.random() * 200 + "px";
-      noBtn.style.top = Math.random() * 150 + "px";
+      noBtn.style.transform = `translate(${Math.random()*120 - 60}px, ${Math.random()*80 - 40}px)`;
     }
 
     noBtn.addEventListener("mouseover", moveButton);
@@ -138,9 +154,7 @@
       document.getElementById("card").innerHTML = `
         <h1>Yayyy Kaushal! 💕</h1>
 
-        <p>
-          I want to tell you something 💌
-        </p>
+        <p>I want to tell you something 💌</p>
 
         <p>
           Somewhere between the smiles and conversations,<br>
@@ -153,11 +167,11 @@
           but I know I’d love to start with you 💕
         </p>
 
-        <p style="font-size:18px; margin-top:10px;">
+        <p style="font-size:20px; margin-top:12px;">
           Happy Valentine’s Day 💘
         </p>
 
-        <p style="font-size:18px;">
+        <p style="font-size:20px;">
           — From Riya 💖
         </p>
       `;
@@ -168,7 +182,8 @@
       heart.className = "heart";
       heart.innerHTML = "💖";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.fontSize = Math.random() * 18 + 16 + "px";
+      heart.style.animationDuration = Math.random() * 2 + 3 + "s";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }
@@ -178,3 +193,4 @@
 
 </body>
 </html>
+
